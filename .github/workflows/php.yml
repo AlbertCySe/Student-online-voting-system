@@ -1,0 +1,59 @@
+name: Generate Static Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run PHP scripts
+      run: |
+        php about.php > about.html
+        php admin.php > admin.html
+        php admin_login.php > admin_login.html
+        php adminlog.php > adminlog.html
+        php check_otp.php > check_otp.html
+        php dashboard.php > dashboard.html
+        php db_conn.php > db_conn.html
+        php home.php > home.html
+        php index.php > index.html
+        php instruct_nomi.php > instruct_nomi.html
+        php instruct_nomination.php > instruct_nomination.html
+        php instruct_vote.php > instruct_vote.html
+        php instruct_voting.php > instruct_voting.html
+        php logout.php > logout.html
+        php nomination.php > nomination.html
+        php out.php > out.html
+        php out1.php > out1.html
+        php out2.php > out2.html
+        php out3.php > out3.html
+        php photo.php > photo.html
+        php printnominate.php > printnominate.html
+        php printstudent.php > printstudent.html
+        php radio.php > radio.html
+        php radio1.php > radio1.html
+        php radio2.php > radio2.html
+        php result.php > result.html
+        php result1.php > result1.html
+        php send_otp.php > send_otp.html
+        php student.php > student.html
+        php student1.php > student1.html
+        php student_login.php > student_login.html
+        php studlog.php > studlog.html
+        php test.php > test.html
+        php upload.php > upload.html
+
+    - name: Commit generated HTML
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add *.html
+        git commit -m 'Generate static site'
+        git push
