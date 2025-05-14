@@ -1,7 +1,7 @@
 name: Generate Static Site
 
-on:
-  push:
+on: Student-online-voting-system
+  push: 
     branches:
       - main
 
